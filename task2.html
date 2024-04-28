@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Form Validation</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<style>
+  .gradient-bg {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+
+    color: white;
+  }
+  .error
+  {
+    color:red;
+  }
+</style>
+</head>
+<body>
+
+<div class="container-fluid gradient-bg">
+  <div class="row justify-content-center">
+    <div class="col-lg-6 col-md-8 col-sm-10 col-12">
+      <h2 class="mt-3 mb-4 text-center">Form Validation</h2>
+      <form id="myForm" onsubmit="return validateForm()">
+        <div class="form-group">
+          <label for="name">Name:</label>
+          <input type="text" placeholder="e.g(Kaviya)" class="form-control" id="name" name="name">
+          <span id="nameError" class="error"></span>
+        </div>
+        <div class="form-group">
+          <label for="email">Email:</label>
+          <input type="text" placeholder="abc@gmail.com" class="form-control" id="email" name="email">
+          <span id="emailError" class="error"></span>
+        </div>
+        <div class="form-group">
+            <label for="gender">Gender:</label>
+            <select class="form-control" id="gender" name="gender">
+              <option value="">Select Gender</option>
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+              <option value="other">Other</option>
+            </select>
+          <span id="genderError" class="error"></span>
+        </div>
+        <div class="form-group">
+            <label for="dob">Date of Birth:</label>
+            <input type="date" class="form-control" id="dob" name="dob">
+            <span id="dobError" class="error"></span>
+          </div>
+  
+        <div class="form-group">
+          <label for="college">College Name:</label>
+          <input type="text" class="form-control" id="college" name="college">
+          <span id="collegeError" class="error"></span>
+        </div>
+        <div class="form-group">
+          <label for="year">Year:</label>
+          <select class="form-control" id="year" name="year">
+            <option value="">Select Year</option>
+            <option value="1">First Year</option>
+            <option value="2">Second Year</option>
+            <option value="3">Third Year</option>
+            <option value="4">Fourth Year</option>
+          </select>
+          <span id="yearError" class="error"></span>
+        </div>
+        <div class="form-group">
+          <label for="branch">Branch:</label>
+          <input type="text" class="form-control" id="branch" name="branch">
+          <span id="branchError" class="error"></span>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+  function validateForm() {
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const college = document.getElementById('college').value;
+    const dob = document.getElementById('dob').value;
+    const gender = document.getElementById('gender').value;
+    const year = document.getElementById('year').value;
+    const branch = document.getElementById('branch').value;
+
+    let isValid = true;
+
+    // Clear previous error messages
+    document.querySelectorAll('.error').forEach(error => error.textContent = '');
+
+    // Name validation
+    if (!name) {
+      document.getElementById('nameError').textContent = 'Name is required';
+      isValid = false;
+    }
+
+    // Email validation
+    if (!email) {
+      document.getElementById('emailError').textContent = 'Email is required';
+      isValid = false;
+    } else if (!isValidEmail()) {
+      document.getElementById('emailError').textContent = 'Invalid email format';
+      isValid = false;
+    }
+
+    // College validation
+    if (!college) {
+      document.getElementById('collegeError').textContent = 'College Name is required';
+      isValid = false;
+    }
+
+    // Date of Birth validation
+    if (!dob) {
+      document.getElementById('dobError').textContent = 'Date of Birth is required';
+      isValid = false;
+    }
+
+    // Gender validation
+    if (!gender) {
+      document.getElementById('genderError').textContent = 'Gender is required';
+      isValid = false;
+    }
+
+    // Year validation
+    if (!year) {
+      document.getElementById('yearError').textContent = 'Please select a year';
+      isValid = false;
+    }
+
+    // Branch validation
+    if (!branch) {
+      document.getElementById('branchError').textContent = 'Branch is required';
+      isValid = false;
+    }
+
+    // Display success message if there are no validation errors
+    if (isValid) {
+      alert('No Validation error!');
+    }
+
+    return isValid;
+  }
+
+  function isValidEmail() {
+    // Basic email validation regex
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const email = document.getElementById('email').value;
+    return regex.test(email);
+  }
+</script>
+
+</body>
+</html>
