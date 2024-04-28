@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    /* Custom CSS for adjusting input box width */
+    #name, #email {
+      width: 20em; /* Adjust this value as needed */
+    }
+    
+    /* Custom CSS for adjusting textarea width */
+    #message {
+      width: 100%; /* Set width to 100% for full width */
+      max-width: 400px; /* Set maximum width to 400px */
+    }
+    .form-control:focus {
+      border-color:black; /* Change border color when input is focused */
+      box-shadow: 0 0 0 0.5rem rgba(0, 38, 255, 0); /* Add a slight shadow when input is focused */
+    }
+  </style>
+</head>
+<body  style="background-color:rgba(211, 211, 211, 0.699)">
+
+<header style="background-color:blue;">
+  <div class="container-fluid">
+    <div class="row pt-3">
+      <div class="col-lg-6 sticky-top">
+        <ul class="list-inline" >
+          <li class="list-inline-item px-3"><img src="img.png" alt="logo" style="width:50px;border-radius: 50px; border-color: black;">
+          </li>
+        </ul>
+      </div>
+      <div class="col-lg-6 d-flex justify-content-end col-sm-12 d-flex justify-content-start col-md-12 d-flex justify-content-start">
+        <ul  class="list-inline pe-3 sticky-top">
+          <li class="list-inline-item "><a class="text-decoration-none mt-2" style="color:#fdfd96;margin-right:15px;font-size:18px;" href="task1.html">HOME</a></li>
+          <li class="list-inline-item"><a class="text-decoration-none " style="color:#fdfd96;margin-right:15px;font-size:18px ;" href="skills.html">MY SKILLS</a></li>
+          <li class="list-inline-item"><a class="text-decoration-none" style="color:#fdfd96; margin-right:15px;font-size:18px;" href="resume.html">RESUME</a></li>
+          <li class="list-inline-item "><a class="text-decoration-none"style="color:#fdfd96; margin-right:15px;font-size:18px;" href="">CONTACT</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="container">
+  <h1 style="text-align:center">Contact Me</h1>
+  <p style="text-align:center"> Feel free to reach out to me for any inquiries or collaborations.</p>
+  
+  <form id="contactForm" action="#" method="post" onsubmit="return submitForm()">
+    <div class="form-group m-2">
+      <label for="name">Name:</label>
+      <input type="text" class="form-control" id="name" placeholder="e.g (Kaviya)" name="name" required>
+    </div>
+    <div class="form-group m-2">
+      <label for="email">Email:</label>
+      <input type="email" class="form-control" placeholder="kaviya2417@gmail.com" id="email" name="email" required>
+    </div>
+    <div class="form-group m-2">
+      <label for="message">Message:</label><br>
+      <textarea id="message" class="form-control" name="message" rows="5" required></textarea>
+    </div>
+    
+    <div class="form-group d-flex justify-content-center">
+      <button type="submit" class="btn btn-primary  m-2">Submit</button>
+    </div>
+  </form>
+  
+  <div id="successMessage" class="alert alert-success bg-info" style="display:none;color: black;">Submitted successfully!</div>
+</div>
+
+<script>
+  function submitForm() {
+    // Display success message
+    document.getElementById('successMessage').style.display = 'block';
+    
+    // Optionally, you can reset the form after submission
+    // document.getElementById('contactForm').reset();
+    
+    // Prevent default form submission
+    return false;
+  }
+</script>
+</body>
+</html>
