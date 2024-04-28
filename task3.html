@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image Slider</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <!-- Custom CSS -->
+  <style>
+    body {
+      background-color: #f0f0f0;
+    }
+    .slider-container {
+      position: relative;
+      overflow: hidden;
+      border: 2px solid #ddd;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      width: 90%; /* Set width of the container */
+      margin: auto; /* Center the container */
+      height: 450px; /* Set height of the container */
+    }
+    .slider-image-container {
+      width: 90%; /* Set width of the image container */
+      height: 100%; /* Set height of the image container */
+      overflow: hidden;
+      position: relative;
+    }
+    .slider-image {
+      width: 100%; /* Set width of the image */
+      height: 90%; /* Set height of the image */
+      object-fit: cover; /* Ensure the image covers the container */
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0; /* Initially hide all images */
+      transition: opacity 0.5s ease-in-out;
+    }
+    .slider-image.active {
+      opacity: 1; /* Show active image */
+    }
+  </style>
+</head>
+<body style="background-color: rgb(184, 165, 165)";>
+<h2  class ="mt-3" style="text-align: center;">IMAGE SLIDER </h2>
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="slider-container">
+        <div class="slider-image-container mx-5 my-4">
+          <img src="img1.webp" class="slider-image active">
+          <img src="img5.png" class="slider-image">
+          <img src="img6.png" class="slider-image">
+          <!-- Add more images as needed -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Bootstrap JS and jQuery (needed for Bootstrap) -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script>
+  let currentSlide = 0;
+  const slides = document.querySelectorAll('.slider-image');
+
+  function showSlide(slideIndex) {
+    slides.forEach((slide) => {
+      slide.classList.remove('active');
+    });
+    slides[slideIndex].classList.add('active');
+  }
+
+  function nextSlide() {
+    currentSlide = (currentSlide + 1) % slides.length;
+    showSlide(currentSlide);
+  }
+
+  function prevSlide() {
+    currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+    showSlide(currentSlide);
+  }
+
+  // Automatic Slide Change (every 5 seconds)
+  setInterval(nextSlide, 5000);
+</script>
+
+</body>
+</html>
